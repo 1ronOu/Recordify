@@ -2,7 +2,7 @@ from typing import Annotated
 import jwt
 from fastapi import Depends, HTTPException, Form,  Request, Response
 from fastapi.responses import RedirectResponse
-from jwt import InvalidTokenError
+from jwt.exceptions import InvalidTokenError
 from starlette import status
 from targefy_app.authenticaton.helpers import TOKEN_TYPE_FIELD, ACCESS_TOKEN_TYPE, REFRESH_TOKEN_TYPE
 from targefy_app.authenticaton import utility
