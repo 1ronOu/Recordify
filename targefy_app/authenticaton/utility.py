@@ -2,7 +2,12 @@ import uuid
 from datetime import timedelta, datetime, timezone
 import jwt
 from targefy_app.authenticaton.dependencies import pwd_context
-SECRET_KEY = '6d68118356edaa0acaad31719b6c3165b29f537c923a05017f80894a58c64509'
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+SECRET_KEY = os.getenv('SECRET_KEY')
 ALGORITHM = 'HS256'
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

@@ -15,6 +15,7 @@ from targefy_app.routers import users, admin, targets, test, logout, register, r
 from targefy_app.authenticaton import auth
 import schemas
 from targefy_app.authenticaton.validation import get_current_user
+from targefy_app.authenticaton.utility import SECRET_KEY
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="targefy_app/static"), name="static")
@@ -27,7 +28,7 @@ app.include_router(logout.router)
 app.include_router(register.router)
 app.include_router(records.router)
 app.include_router(error.router)
-app.add_middleware(SessionMiddleware, secret_key="6d68118356edaa0acaad31719b6c3165b29f537c923a05017f80894a58c64509")
+app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY)
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -45,7 +46,7 @@ def get_db():
 
 @app.get('/')
 def root():
-    return RedirectResponse(url='/records', status_code=status.HTTP_302_FOUND)
+    return RedirectResponse(url='/records/?sort_by=date_added&order=asc', status_code=status.HTTP_302_FOUND)
 
 
 @app.exception_handler(HTTPException)
