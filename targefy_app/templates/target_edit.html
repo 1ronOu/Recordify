@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h6 class="mb-4">Update your target on {{ added_at }}</h6>
+        <form method="post" action="/target/update_target/{{ record_id }}/{{ target_id }}">
+            <input type="hidden" name="record_id" value="{{ record_id }}">
+
+            <div class="mb-3">
+                <label for="value_for_update" class="form-label">Value</label>
+                <input type="number" step="0.01" min="0.00" max="99.99" class="form-control" id="value_for_update" name="value_for_update" required>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Update Target</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

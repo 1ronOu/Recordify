@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <form method="post" action="/target/create_target/">
+        <div class="form-group">
+            <label for="value">Value</label>
+            <input type="text" class="form-control" id="value" name="value" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Add target</button>
+    </form>
+</div>
+{% endblock %}

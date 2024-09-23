@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="p-4 rounded-3" style="border: 3px solid #f8f9fb; border-radius: 15px;">
+                <h2 class="h4 mb-4 text-center">Edit Record Name</h2>
+
+                <form action="/records/change_record_name/{{ record_id }}" method="post">
+                    <div class="mb-4">
+                        <label for="record_name" class="form-label">New Name</label>
+                        <input type="text" class="form-control" id="record_name" name="record_name" value="{{ record_model.record_name }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Save</button>
+                </form>
+
+
+                <form action="/records/change_record_unit/{{ record_id }}" method="post">
+                    <div class="mb-4">
+                        <label for="new_record_unit" class="form-label">New Unit</label>
+                        <input type="text" class="form-control" id="new_record_unit" name="new_record_unit" value="{{ record_model.unit }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Save</button>
+                </form>
+
+
+                <form action="/records/delete_record/{{ record_id }}" method="post">
+                    <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('Are you sure you want to delete this record?');">Delete Record</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
